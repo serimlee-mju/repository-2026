@@ -1,0 +1,22 @@
+.box {
+  width: 200px;
+  height: 200px;
+  background-color: red;
+  border-radius: 8px;
+}
+
+.bg-img {
+  display: block;
+  width: 800px;
+  height: 600px;
+  object-fit: cover;
+  object-position: 30% 50%;
+  /*세로는 cover로 꽉 차 있다.*/
+}
+.cat-img {
+  display: block;
+  width: 200px;
+  position: absolute;
+  top: 250px;
+  left: 200px;
+}
