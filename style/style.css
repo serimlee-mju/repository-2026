@@ -1,0 +1,209 @@
+@import url("https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&display=swap");
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.poster {
+  position: relative;
+  width: 100vw;
+  height: 56.25vw;
+  max-height: 100vh;
+  max-width: 177.78vh;
+  background-color: #f5f5f5;
+}
+
+.titletext {
+  position: absolute;
+  top: 7%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: "Afacad", sans-serif;
+  font-weight: 645;
+  font-size: 6vw;
+  line-height: 0.9;
+  color: #000000;
+  letter-spacing: -2px;
+  z-index: 4;
+}
+
+.footertext {
+  position: absolute;
+  bottom: 6%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: "Afacad", sans-serif;
+  font-size: 1.1vw;
+  line-height: 1.4;
+  color: #000000;
+  z-index: 4;
+}
+
+.buttons {
+  position: absolute;
+  top: 54%;
+  right: 1%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5vw;
+  z-index: 20;
+}
+
+.rightbuttons {
+  width: 2.8vw;
+  aspect-ratio: 53 / 60;
+  object-fit: contain;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.rightbuttons:hover {
+  transform: scale(1.1);
+}
+
+.koreahour,
+.koreaminute,
+.koreasecond {
+  position: absolute;
+  top: 31%;
+  width: 27%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  transform-origin: center center;
+  filter: drop-shadow(0 0.1vw 0.05vw rgba(0, 0, 0, 0.742));
+}
+
+.koreahour {
+  left: 12%;
+  z-index: 1;
+}
+
+.koreaminute {
+  left: 36.5%;
+  z-index: 2;
+}
+
+.koreasecond {
+  left: 61%;
+  z-index: 3;
+}
+
+.li-scene {
+  display: none;
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.karel-image {
+  position: absolute;
+  height: 72%;
+  width: auto;
+  max-width: none;
+  object-fit: contain;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  transition: none !important; /*최우선문법!important쓰는거*/
+}
+
+.poster.li-fullscreen .li-scene {
+  display: block !important;
+  position: absolute !important;
+  top: 12% !important;
+  left: 10% !important;
+  width: 80% !important;
+  height: 72% !important;
+  z-index: 10 !important;
+  background-color: #f5f5f5 !important;
+}
+
+.poster.li-fullscreen .karel-image {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  left: 0 !important;
+  top: 0 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+.poster.li-fullscreen .titletext {
+  display: none !important;
+}
+
+/* 제목의 O 글자에 원을 묶어서 항상 중앙에 유지 */
+.o-letter {
+  position: relative;
+  display: inline-block;
+  line-height: 1;
+}
+
+.li-inside {
+  display: none;
+  position: absolute;
+  top: 0.52em;
+  left: 51.5%;
+  width: 0.49em;
+  height: 0.49em;
+  max-width: none;
+  transform: translate(-50%, -50%);
+  object-fit: contain;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.poster.li-active .li-scene,
+.poster.li-active .li-inside {
+  display: block;
+}
+
+.poster.li-active .koreahour,
+.poster.li-active .koreaminute,
+.poster.li-active .koreasecond {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.poster.li-active .li-scene,
+.poster.li-active .li-inside {
+  animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.poster.li-fullscreen .li-scene {
+  animation: zoomIn 0.8s ease forwards;
+}
